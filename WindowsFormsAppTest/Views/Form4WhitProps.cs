@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinformRouter;
+using WinFormRouter.Interfaces;
 
 namespace WindowsFormsAppTest.Views
 {
-    public partial class Form4WhitProps : Form
+    public partial class Form4WhitProps : Form, IFormProps
     {
         public Router Router { get; set; }
         public Form4WhitProps()
@@ -20,6 +21,11 @@ namespace WindowsFormsAppTest.Views
         }
 
         private void Form4WhitProps_Load(object sender, EventArgs e)
+        {
+            UpdateProps();
+        }
+
+        public void UpdateProps()
         {
             label1.Text = Router.CurrentRoute.GetPropsValue("Title").ToString();
         }

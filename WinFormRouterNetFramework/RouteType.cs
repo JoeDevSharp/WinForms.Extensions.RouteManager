@@ -10,7 +10,8 @@ namespace WinformRouter
     {
         Navigation,
         Show,
-        DefaultDialog,
-        CustomDialog
+        Dialog,
+        CustomDialog,
+        Integrate,
     }
 }

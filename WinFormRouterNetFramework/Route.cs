@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,12 @@ namespace WinformRouter
     public class Route
     {
         public string Name { get; set; }
+        public string Title { get; set; } = "";
+        public bool ShowInMenu { get; set; } = true;
+        public string Description { get; set; } = "";
+        public Image Image { get; set; } = null;
         public RouteType Type { get; set; } = RouteType.Navigation;
-        public List<RouteProp> Props { get; set; } = null;
         public Form Component { get; set; }
-
-        public object GetPropsValue(string Name)
-        {
-            return Props.SingleOrDefault(x => x.Name == Name).Value;
-        } 
+        public List<Route> Childrend { get; set; } = null;
     }
 }

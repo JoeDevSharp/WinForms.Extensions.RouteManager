@@ -9,7 +9,7 @@ namespace WinformRouter
     public class Router
     {
         public EventHandler RouteChange;
-        private List<Route> Routes { get; set; }
+        public List<Route> Routes { get; set; }
 
         public Router(List<Route> routes, ScrollableControl mainApplication, bool historyNavigate = false)
         {
@@ -26,7 +26,7 @@ namespace WinformRouter
 
         public Route CurrentRoute;
 
-        private Route GetRoute(string routeName, List<Route> routes)
+        public Route GetRoute(string routeName, List<Route> routes)
         {
             foreach (var route in routes)
             {

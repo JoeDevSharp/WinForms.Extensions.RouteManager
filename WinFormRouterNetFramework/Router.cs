@@ -9,6 +9,7 @@ namespace WinformRouter
     public class Router
     {
         public EventHandler RouteChange;
+
         public List<Route> Routes { get; set; }
 
         public Router(List<Route> routes, ScrollableControl mainApplication, bool historyNavigate = false)
@@ -82,7 +83,7 @@ namespace WinformRouter
             To(routeName, routeType);
         }
 
-        public void To (string routeName, RouteType? routeType = null)
+        public void To(string routeName, RouteType? routeType = null)
         {
             Route route = GetRoute(routeName, Routes);
 

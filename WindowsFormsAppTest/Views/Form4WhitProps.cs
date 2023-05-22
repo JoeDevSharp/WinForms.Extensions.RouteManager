@@ -8,11 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinformRouter;
-using WinFormRouter.Interfaces;
 
 namespace WindowsFormsAppTest.Views
 {
-    public partial class Form4WhitProps : Form, IFormProps
+    public partial class Form4WhitProps : Form
     {
         public Router Router { get; set; }
         public string Title { get; set; }

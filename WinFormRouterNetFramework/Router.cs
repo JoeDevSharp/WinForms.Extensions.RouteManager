@@ -75,10 +75,10 @@ namespace WinformRouter
             {
                 foreach (var prop in props)
                 {
-                    route.Component.GetType().GetProperty(prop.Key)?.SetValue(route.Component, prop.Value);
+                    route.Component.GetType().GetProperty(prop.Key)?.SetValue(route.Component, prop.Value, null);
                 }
             }
-            route.Component.GetType().GetProperty("Router")?.SetValue(route.Component, this);
+            route.Component.GetType().GetProperty("Router")?.SetValue(route.Component, this, null);
             CurrentRoute = route;
             To(routeName, routeType);
         }

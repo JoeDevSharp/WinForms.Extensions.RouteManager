@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinformRouter
+namespace WinformRouterNetFramework
 {
     /// <summary>
     /// Router model, permete de definir une route
@@ -19,7 +15,7 @@ namespace WinformRouter
         public bool ShowInMenu { get; set; } = true;
         public string Description { get; set; } = "";
         public Image Image { get; set; } = null;
-        public RouteType Type { get; set; } = RouteType.Navigation;
+        public NavigationType Type { get; set; } = NavigationType.Navigation;
         public Form Component { get; set; }
         public List<Route> Childrend { get; set; } = null;
     }

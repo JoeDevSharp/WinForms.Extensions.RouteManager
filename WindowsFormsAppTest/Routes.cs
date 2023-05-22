@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinformRouter;
+using WinformRouterNetFramework;
 
 namespace WindowsFormsAppTest
 {
@@ -14,25 +14,25 @@ namespace WindowsFormsAppTest
             new Route()
             {
                 Name = "Navigation1",
-                Type = RouteType.Navigation,
+                Type = NavigationType.Navigation,
                 Component = new Views.Form1()
             },
             new Route()
             {
                 Name = "Navigation2",
-                Type = RouteType.Navigation,
+                Type = NavigationType.Navigation,
                 Component = new Views.Form2()
             },
             new Route()
             {
                 Name = "Navigation3",
-                Type = RouteType.Navigation,
+                Type = NavigationType.Navigation,
                 Component = new Views.Form3()
             },
             new Route()
             {
                 Name = "Navigation4",
-                Type = RouteType.Navigation,
+                Type = NavigationType.Navigation,
                 Component = new Views.Form4WhitProps()
             },
         };

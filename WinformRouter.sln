@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsAppTest", "WindowsFormsAppTest\WindowsFormsAppTest.csproj", "{E56FF160-FE0B-41D9-9FDD-3F7B5B8E533E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormRouter", "WinFormRouterNetFramework\WinFormRouter.csproj", "{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormRouterNetFramework", "WinFormRouterNetFramework\WinFormRouterNetFramework.csproj", "{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

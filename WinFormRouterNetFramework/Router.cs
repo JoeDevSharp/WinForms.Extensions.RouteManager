@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace WinformRouter
+namespace WinformRouterNetFramework
 {
     public class Router
     {
@@ -67,7 +67,7 @@ namespace WinformRouter
             component.Hide();
         }
 
-        public void To(string routeName, Dictionary<string, object> props, RouteType? routeType = null)
+        public void To(string routeName, Dictionary<string, object> props, NavigationType? routeType = null)
         {
             Route route = GetRoute(routeName, Routes);
             
@@ -83,7 +83,7 @@ namespace WinformRouter
             To(routeName, routeType);
         }
 
-        public void To(string routeName, RouteType? routeType = null)
+        public void To(string routeName, NavigationType? routeType = null)
         {
             Route route = GetRoute(routeName, Routes);
 
@@ -112,19 +112,19 @@ namespace WinformRouter
 
             switch (routeType)
             {
-                case RouteType.Navigation:
+                case NavigationType.Navigation:
                     Navigate(route); 
                     break;
-                case RouteType.Show:
+                case NavigationType.Show:
                     Show(route);
                     break;
-                case RouteType.Dialog:
+                case NavigationType.Dialog:
                     ShowDefaultDialog(route);
                     break;
-                case RouteType.CustomDialog:
+                case NavigationType.CustomDialog:
                     ShowCustomDialog(route);
                     break;
-                case RouteType.Integrate:
+                case NavigationType.Integrate:
                     Integrate(route);
                     break;
             }

@@ -122,9 +122,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WinFormRouterNetFramework\WinFormRouter.csproj">
+    <ProjectReference Include="..\WinFormRouterNetFramework\WinFormRouterNetFramework.csproj">
       <Project>{2399baca-eede-4d5a-b789-b9c117a6ac00}</Project>
-      <Name>WinFormRouter</Name>
+      <Name>WinFormRouterNetFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

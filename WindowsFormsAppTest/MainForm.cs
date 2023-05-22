@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsAppTest.Views;
-using WinformRouter;
+using WinformRouterNetFramework;
 
 namespace WindowsFormsAppTest
 {
@@ -41,32 +34,32 @@ namespace WindowsFormsAppTest
 
         private void show1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation1", RouteType.Show);
+            Router.To("Navigation1", NavigationType.Show);
         }
 
         private void show2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation2", RouteType.Show);
+            Router.To("Navigation2", NavigationType.Show);
         }
 
         private void show3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation3", RouteType.Show);
+            Router.To("Navigation3", NavigationType.Show);
         }
 
         private void defaultDialogToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation1", RouteType.Dialog);
+            Router.To("Navigation1", NavigationType.Dialog);
         }
 
         private void defaultDialogToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation2", RouteType.Dialog);
+            Router.To("Navigation2", NavigationType.Dialog);
         }
 
         private void defaultDialogToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation3", RouteType.Dialog);
+            Router.To("Navigation3", NavigationType.Dialog);
         }
 
         private void navigationWhitPropsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,7 +75,7 @@ namespace WindowsFormsAppTest
             Router.To("Navigation4", new Dictionary<string, object>()
             {
                 { "Title", "Fea" }
-            }, RouteType.Show);
+            }, NavigationType.Show);
         }
     }
 }

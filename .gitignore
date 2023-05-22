@@ -3,3 +3,4 @@ obj/
 bin/
 WinformRouter/WinformRouter.csproj
 WinFormRouterNetFramework/Package Version
+WinFormRouterNetFramework\*.nupkg

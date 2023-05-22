@@ -15,6 +15,7 @@ namespace WindowsFormsAppTest.Views
     public partial class Form4WhitProps : Form, IFormProps
     {
         public Router Router { get; set; }
+        public string Title { get; set; }
         public Form4WhitProps()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace WindowsFormsAppTest.Views
 
         public void UpdateProps()
         {
-            label1.Text = Router.CurrentRoute.GetPropsValue("Title").ToString();
+            label1.Text = Title;
         }
     }
 }

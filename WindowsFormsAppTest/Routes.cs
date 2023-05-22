@@ -33,14 +33,6 @@ namespace WindowsFormsAppTest
             {
                 Name = "Navigation4",
                 Type = RouteType.Navigation,
-                Props = new List<RouteProp>()
-                {
-                    new RouteProp()
-                    {
-                        Name = "Title",
-                        Type = typeof(string),
-                    }
-                },
                 Component = new Views.Form4WhitProps()
             },
         };

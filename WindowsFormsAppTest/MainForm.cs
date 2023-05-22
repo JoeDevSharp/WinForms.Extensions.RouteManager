@@ -56,22 +56,22 @@ namespace WindowsFormsAppTest
 
         private void defaultDialogToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation1", RouteType.DefaultDialog);
+            Router.To("Navigation1", RouteType.Dialog);
         }
 
         private void defaultDialogToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation2", RouteType.DefaultDialog);
+            Router.To("Navigation2", RouteType.Dialog);
         }
 
         private void defaultDialogToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Router.To("Navigation3", RouteType.DefaultDialog);
+            Router.To("Navigation3", RouteType.Dialog);
         }
 
         private void navigationWhitPropsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Router.To<Form4WhitProps>("Navigation4", new Dictionary<string, object>()
+            Router.To("Navigation4", new Dictionary<string, object>()
             {
                 { "Title", "hola" }
             });
@@ -79,7 +79,7 @@ namespace WindowsFormsAppTest
 
         private void navigationWhitPropsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Router.To<Form4WhitProps>("Navigation4", new Dictionary<string, object>()
+            Router.To("Navigation4", new Dictionary<string, object>()
             {
                 { "Title", "Fea" }
             }, RouteType.Show);

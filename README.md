@@ -1,4 +1,5 @@
 # WinForm Router
+
 The Router class is a C# implementation designed to facilitate navigation and dynamic management of views and forms in a Windows Forms application. It provides methods and functionalities to switch between different views, pass props during navigation, and control routing in general.
 
 ## Key Features:
@@ -16,3 +17,5 @@ The Router class is a C# implementation designed to facilitate navigation and dy
 - Separation of Concerns: By centralizing navigation management in the router, it achieves better separation of concerns and a more organized code structure.
 
 In summary, the Router class implemented in C# provides a solution for dynamic management of views and forms in a Windows Forms application. It allows switching between different views, passing props during navigation, and controlling various navigation types. With this implementation, you can achieve greater modularity, flexibility, and component reusability in your application.
+
+# Get started

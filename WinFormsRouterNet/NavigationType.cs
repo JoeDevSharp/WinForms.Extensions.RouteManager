@@ -1,4 +1,4 @@
-﻿namespace Codevia.WinForm.Router
+﻿namespace Codevia.WinForm.Router.Net
 {
     public enum NavigationType
     {

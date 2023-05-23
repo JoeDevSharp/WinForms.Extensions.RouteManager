@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormRouterNetFrameworkTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormRouterNetFramework", "WinFormRouterNetFramework\WinFormRouterNetFramework.csproj", "{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsRouterNet", "WinFormsRouterNet\WinFormsRouterNet.csproj", "{BF667219-6C67-4262-A42F-F8E9E38C3F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsRouterNet", "WinFormsRouterNet\WinFormsRouterNet.csproj", "{BF667219-6C67-4262-A42F-F8E9E38C3F56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{78CDF4FB-A0BB-4B58-8D73-5F3FC196A89E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppNetTest", "WinFormsAppNetTest\WinFormsAppNetTest.csproj", "{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +31,17 @@ Global
 		{BF667219-6C67-4262-A42F-F8E9E38C3F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF667219-6C67-4262-A42F-F8E9E38C3F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF667219-6C67-4262-A42F-F8E9E38C3F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E56FF160-FE0B-41D9-9FDD-3F7B5B8E533E} = {78CDF4FB-A0BB-4B58-8D73-5F3FC196A89E}
+		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950} = {78CDF4FB-A0BB-4B58-8D73-5F3FC196A89E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B003C9AC-52EB-4DC7-9487-18753EB55E59}

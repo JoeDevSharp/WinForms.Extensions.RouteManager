@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Codevia.WinForm.Router
+namespace Codevia.WinForm.Router.NetFramework
 {
     /// <summary>
     /// Router model, permete de definir une route
@@ -15,7 +15,7 @@ namespace Codevia.WinForm.Router
         public bool ShowInMenu { get; set; } = true;
         public string Description { get; set; } = "";
         public Image Image { get; set; } = null;
-        public NavigationType Type { get; set; } = NavigationType.Navigation;
+        public object Type { get; set; } = NavigationType.Navigation;
         public Form Component { get; set; }
         public List<Route> Childrend { get; set; } = null;
     }

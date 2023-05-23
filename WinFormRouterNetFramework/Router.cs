@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Codevia.WinForm.Router
+namespace Codevia.WinForm.Router.NetFramework
 {
     public class Router
     {
@@ -89,7 +89,7 @@ namespace Codevia.WinForm.Router
 
             if (routeType == null)
             {
-                routeType = route.Type;
+                routeType = (NavigationType)route.Type;
             }
 
             CurrentRoute = route;

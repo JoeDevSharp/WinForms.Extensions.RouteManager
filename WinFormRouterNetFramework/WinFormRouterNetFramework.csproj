@@ -7,7 +7,7 @@
     <ProjectGuid>{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WinFormRouterNetFramework</RootNamespace>
+    <RootNamespace>Codevia.WinForm.Router.NetFramework</RootNamespace>
     <AssemblyName>WinFormRouterNetFramework</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -63,7 +63,7 @@
     </Compile>
     <Compile Include="Route.cs" />
     <Compile Include="Router.cs" />
-    <Compile Include="RouteType.cs" />
+    <Compile Include="NavigationType.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

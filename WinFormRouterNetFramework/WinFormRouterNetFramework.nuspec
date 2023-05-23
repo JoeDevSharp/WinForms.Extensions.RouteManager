@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>Codevia.WindowsForms.NetFramework</id>
+    <id>Codevia.WinForm.Router.NetFramework</id>
     <version>$version$</version>
-    <title>Codevia.WindowsForms.NetFramework</title>
+    <title>Codevia.WinForm.Router.NetFramework</title>
     <authors>Codevia</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://codeiva.io</licenseUrl>
     <icon>images/icon.png</icon>
     <projectUrl>https://codevia.io</projectUrl>
-    <description>$description$</description>
+    <description>This router allows you to create an advanced winforms window management</description>
     <releaseNotes></releaseNotes>
     <copyright>$copyright$</copyright>
-    <tags>WindowsForms Router</tags>
+    <tags>WindowsForms Router NetFramework</tags>
   </metadata>
   <files>
     <file src="images/icon.png" target="images/" />

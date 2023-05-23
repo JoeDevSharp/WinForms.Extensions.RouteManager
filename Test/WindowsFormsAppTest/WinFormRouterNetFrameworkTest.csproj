@@ -122,7 +122,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WinFormRouterNetFramework\WinFormRouterNetFramework.csproj">
+    <ProjectReference Include="..\..\WinFormRouterNetFramework\WinFormRouterNetFramework.csproj">
       <Project>{2399baca-eede-4d5a-b789-b9c117a6ac00}</Project>
       <Name>WinFormRouterNetFramework</Name>
     </ProjectReference>

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("WinForm Router .NetFramework")]
-[assembly: AssemblyDescription("This router allows you to create an advanced winforms window management")]
+[assembly: AssemblyDescription("The Router is designed to facilitate navigation and dynamic management of views and forms in a Windows Forms application. It provides methods and functionalities to switch between different views, pass props during navigation, and control routing in general.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Codevia")]
 [assembly: AssemblyProduct("WinFormRouter for NetFramework")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión
 // utilizando el carácter "*", como se muestra a continuación:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.7")]
-[assembly: AssemblyFileVersion("1.0.0.7")]
+[assembly: AssemblyVersion("1.0.0.8")]
+[assembly: AssemblyFileVersion("1.0.0.8")]

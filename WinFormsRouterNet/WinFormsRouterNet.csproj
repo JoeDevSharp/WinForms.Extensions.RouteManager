@@ -8,12 +8,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Codevia.WinForm.Router.Net</Title>
-    <Version>1.0.0.2</Version>
+    <Version>1.0.0.4</Version>
     <Authors>Codevia</Authors>
     <Company>Codevia</Company>
     <PackageProjectUrl>https://codevia.io</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageTags>WinForm Router</PackageTags>
+    <PackageTags>WindowsForms Router Net</PackageTags>
     <Description>This router allows you to create an advanced winforms window management</Description>
     <Copyright>Copyright © 2023</Copyright>
     <PackageId>Codevia.WinForm.Router.Net</PackageId>

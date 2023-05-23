@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace WinformRouterNet
+namespace Codevia.WinForm.Router
 {
     public class Router
     {

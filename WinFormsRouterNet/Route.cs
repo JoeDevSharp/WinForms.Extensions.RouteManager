@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WinformRouterNet
+namespace Codevia.WinForm.Router
 {
     /// <summary>
     /// Router model, permete de definir une route

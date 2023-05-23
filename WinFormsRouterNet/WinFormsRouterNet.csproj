@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Codevia.WinForm.Router.Net</Title>
-    <Version>1.0.0.6</Version>
+    <Version>1.0.0.7</Version>
     <Authors>Codevia</Authors>
     <Company>Codevia</Company>
     <PackageProjectUrl>https://codevia.io</PackageProjectUrl>
@@ -35,10 +35,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\WinFormRouterNetFramework\WinFormRouterNetFramework.csproj" />
   </ItemGroup>
 
 </Project>

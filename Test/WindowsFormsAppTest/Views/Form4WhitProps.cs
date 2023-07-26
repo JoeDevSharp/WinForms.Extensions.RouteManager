@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Codevia.WinForm.Router;
+using Codevia.WinForm.Router.NetFramework;
 
 namespace WindowsFormsAppTest.Views
 {

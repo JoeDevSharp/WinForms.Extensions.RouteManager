@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Codevia.WinForm.Router;
+using Codevia.WinForm.Router.NetFramework;
+using WindowsFormsAppTest.Enums;
 
 namespace WindowsFormsAppTest
 {
     public partial class MainForm : Form
     {
+        public Permisions UserPermision = Permisions.Admin;
         public MainForm()
         {
             InitializeComponent();
@@ -14,7 +17,7 @@ namespace WindowsFormsAppTest
         private Router Router;
         private void Form1_Load(object sender, EventArgs e)
         {
-            Router = new Router(Routes.routes, this);
+            Router = new Router(Routes.routes, this, (int)UserPermision);
         }
 
         private void navigation1ToolStripMenuItem_Click(object sender, EventArgs e)

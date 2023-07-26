@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Codevia.WinForm.Router;
+using Codevia.WinForm.Router.NetFramework;
+using WindowsFormsAppTest.Enums;
 
 namespace WindowsFormsAppTest
 {
@@ -15,25 +16,29 @@ namespace WindowsFormsAppTest
             {
                 Name = "Navigation1",
                 Type = NavigationType.Navigation,
-                Component = new Views.Form1()
+                Component = new Views.Form1(),
+                Permisions = Permisions.Contributeur
             },
             new Route()
             {
                 Name = "Navigation2",
                 Type = NavigationType.Navigation,
-                Component = new Views.Form2()
+                Component = new Views.Form2(),
+                Permisions = Permisions.Admin
             },
             new Route()
             {
                 Name = "Navigation3",
                 Type = NavigationType.Navigation,
-                Component = new Views.Form3()
+                Component = new Views.Form3(),
+                Permisions = Permisions.Dev
             },
             new Route()
             {
                 Name = "Navigation4",
                 Type = NavigationType.Navigation,
-                Component = new Views.Form4WhitProps()
+                Component = new Views.Form4WhitProps(),
+                Permisions = Permisions.Contributeur
             },
         };
     }

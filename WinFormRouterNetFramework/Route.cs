@@ -13,10 +13,13 @@ namespace Codevia.WinForm.Router.NetFramework
         public string Name { get; set; }
         public string Title { get; set; } = "";
         public bool ShowInMenu { get; set; } = true;
+        public object Permisions { get; set; }
         public string Description { get; set; } = "";
         public Image Image { get; set; } = null;
         public object Type { get; set; } = NavigationType.Navigation;
         public Form Component { get; set; }
-        public List<Route> Childrend { get; set; } = null;
+        public Routes Childrend { get; set; } = null;
     }
+
+    public class Routes : List<Route> { }
 }

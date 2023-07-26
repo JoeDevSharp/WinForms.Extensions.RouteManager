@@ -17,11 +17,26 @@ namespace Codevia.WinForm.Router.NetFramework
         /// <param name="routes">List of Route</param>
         /// <param name="routerContainer">Container where the current navigation will be capped</param>
         /// <param name="historyNavigate">If we want to activate the navigation record</param>
-        public Router(List<Route> routes, ScrollableControl routerContainer, bool historyNavigate = false)
+        public Router(Routes routes, ScrollableControl routerContainer, int? accessLevel = null, bool historyNavigate = false)
         {
             Routes = routes;
             HistoryNavigate = historyNavigate;
             RouterContainer = routerContainer;
+            AccesLevel = accessLevel;
+        }
+
+        /// <summary>
+        /// Constructor of class
+        /// </summary>
+        /// <param name="routes">List of Route</param>
+        /// <param name="routerContainer">Container where the current navigation will be capped</param>
+        /// <param name="historyNavigate">If we want to activate the navigation record</param>
+        public Router(List<Route> routes, ScrollableControl routerContainer, int? accessLevel = null, bool historyNavigate = false)
+        {
+            Routes = routes;
+            HistoryNavigate = historyNavigate;
+            RouterContainer = routerContainer;
+            AccesLevel = accessLevel;
         }
 
         #region "Public Events"
@@ -29,6 +44,7 @@ namespace Codevia.WinForm.Router.NetFramework
         /// Event that captures at the moment that the current route has changed
         /// </summary>
         public EventHandler RouteChange;
+        public EventHandler BodyGuard;
         #endregion
 
         #region "Public Properties"
@@ -53,6 +69,7 @@ namespace Codevia.WinForm.Router.NetFramework
         /// Element contining the history of navigation
         /// </summary>
         private bool HistoryNavigate { get; set; } = false;
+        private int? AccesLevel;
         #endregion
 
         #region "Public methods"
@@ -113,6 +130,19 @@ namespace Codevia.WinForm.Router.NetFramework
         {
             Route route = GetRoute(routeName, Routes);
 
+            EventHandler handlerBodyGuard = BodyGuard;
+            if (null != handlerBodyGuard) handlerBodyGuard(new BodyGuard()
+            {
+                From = CurrentRoute,
+                To = route
+            }, EventArgs.Empty);
+
+            if (AccesLevel > (int)route.Permisions)
+            {
+                MessageBox.Show("You don't have acces for this route");
+                return; 
+            }
+      
             if (navigationType == null)
             {
                 navigationType = (NavigationType)route.Type;

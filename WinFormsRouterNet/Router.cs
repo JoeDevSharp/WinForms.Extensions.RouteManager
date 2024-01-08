@@ -1,4 +1,4 @@
-﻿namespace Codevia.WinForm.Router.Net
+﻿namespace Codevia.Router.Winform
 {
     /// <summary>
     /// This class allows you to manage navigation according to the needs of the application.
@@ -11,11 +11,26 @@
         /// <param name="routes">List of Route</param>
         /// <param name="routerContainer">Container where the current navigation will be capped</param>
         /// <param name="historyNavigate">If we want to activate the navigation record</param>
-        public Router(List<Route> routes, ScrollableControl routerContainer, bool historyNavigate = false)
+        public Router(Routes routes, ScrollableControl routerContainer, int? accessLevel = null, bool historyNavigate = false)
         {
             Routes = routes;
             HistoryNavigate = historyNavigate;
             RouterContainer = routerContainer;
+            AccesLevel = accessLevel;
+        }
+
+        /// <summary>
+        /// Constructor of class
+        /// </summary>
+        /// <param name="routes">List of Route</param>
+        /// <param name="routerContainer">Container where the current navigation will be capped</param>
+        /// <param name="historyNavigate">If we want to activate the navigation record</param>
+        public Router(List<Route> routes, ScrollableControl routerContainer, int? accessLevel = null, bool historyNavigate = false)
+        {
+            Routes = routes;
+            HistoryNavigate = historyNavigate;
+            RouterContainer = routerContainer;
+            AccesLevel = accessLevel;
         }
 
         #region "Public Events"
@@ -23,6 +38,7 @@
         /// Event that captures at the moment that the current route has changed
         /// </summary>
         public EventHandler RouteChange;
+        public EventHandler BodyGuard;
         #endregion
 
         #region "Public Properties"
@@ -47,6 +63,7 @@
         /// Element contining the history of navigation
         /// </summary>
         private bool HistoryNavigate { get; set; } = false;
+        private int? AccesLevel;
         #endregion
 
         #region "Public methods"
@@ -106,6 +123,19 @@
         public void To(string routeName, NavigationType? navigationType = null)
         {
             Route route = GetRoute(routeName, Routes);
+
+            EventHandler handlerBodyGuard = BodyGuard;
+            if (null != handlerBodyGuard) handlerBodyGuard(new BodyGuard()
+            {
+                From = CurrentRoute,
+                To = route
+            }, EventArgs.Empty);
+
+            if (AccesLevel is not null && AccesLevel > (int)route.Permisions)
+            {
+                MessageBox.Show("You don't have acces for this route");
+                return;
+            }
 
             if (navigationType == null)
             {

@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WinFormsRouterNet\WinFormsRouterNet.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\Page2.cs">
       <SubType>Form</SubType>
     </Compile>

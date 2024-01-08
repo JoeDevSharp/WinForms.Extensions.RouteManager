@@ -5,13 +5,13 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormRouterNetFrameworkTest", "Test\WindowsFormsAppTest\WinFormRouterNetFrameworkTest.csproj", "{E56FF160-FE0B-41D9-9FDD-3F7B5B8E533E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormRouterNetFramework", "WinFormRouterNetFramework\WinFormRouterNetFramework.csproj", "{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsRouterNet", "WinFormsRouterNet\WinFormsRouterNet.csproj", "{BF667219-6C67-4262-A42F-F8E9E38C3F56}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{78CDF4FB-A0BB-4B58-8D73-5F3FC196A89E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppNetTest", "WinFormsAppNetTest\WinFormsAppNetTest.csproj", "{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppNetTest", "WinFormsAppNetTest\WinFormsAppNetTest.csproj", "{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevia.Router.Framework", "Codevia.Router.Framework\Codevia.Router.Framework.csproj", "{1074708A-6BEF-49DD-8643-03779ABD65E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codevia.Router.Net", "Codevia.Router.Net\Codevia.Router.Net.csproj", "{347E68FD-8115-48FD-B708-6ECF1969D677}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,18 +23,18 @@ Global
 		{E56FF160-FE0B-41D9-9FDD-3F7B5B8E533E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E56FF160-FE0B-41D9-9FDD-3F7B5B8E533E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E56FF160-FE0B-41D9-9FDD-3F7B5B8E533E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2399BACA-EEDE-4D5A-B789-B9C117A6AC00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF667219-6C67-4262-A42F-F8E9E38C3F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF667219-6C67-4262-A42F-F8E9E38C3F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF667219-6C67-4262-A42F-F8E9E38C3F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF667219-6C67-4262-A42F-F8E9E38C3F56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB2F9161-6B52-4030-B6AF-DAC9CAD2A950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1074708A-6BEF-49DD-8643-03779ABD65E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1074708A-6BEF-49DD-8643-03779ABD65E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1074708A-6BEF-49DD-8643-03779ABD65E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1074708A-6BEF-49DD-8643-03779ABD65E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347E68FD-8115-48FD-B708-6ECF1969D677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347E68FD-8115-48FD-B708-6ECF1969D677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347E68FD-8115-48FD-B708-6ECF1969D677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347E68FD-8115-48FD-B708-6ECF1969D677}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

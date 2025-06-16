@@ -1,4 +1,4 @@
-﻿namespace Codevia.Router.Net
+﻿namespace JoeDevSharp.WinForms.Extensions.RouteManager.Enums
 {
     public enum NavigationType
     {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JoeDevSharp.WinForms.Extensions.RouteManager.Enums;
 
-namespace Codevia.Router.Net
+namespace JoeDevSharp.WinForms.Extensions.RouteManager
 {
     /// <summary>
     /// Router model, permete de definir une route

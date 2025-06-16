@@ -1,4 +1,6 @@
-﻿namespace Codevia.Router.Net
+﻿using JoeDevSharp.WinForms.Extensions.RouteManager.Enums;
+
+namespace JoeDevSharp.WinForms.Extensions.RouteManager
 {
     /// <summary>
     /// This class allows you to manage navigation according to the needs of the application.
@@ -19,42 +21,28 @@
             AccesLevel = accessLevel;
         }
 
-        /// <summary>
-        /// Constructor of class
-        /// </summary>
-        /// <param name="routes">List of Route</param>
-        /// <param name="routerContainer">Container where the current navigation will be capped</param>
-        /// <param name="historyNavigate">If we want to activate the navigation record</param>
-        public Router(List<Route> routes, ScrollableControl routerContainer, int? accessLevel = null, bool historyNavigate = false)
-        {
-            Routes = routes;
-            HistoryNavigate = historyNavigate;
-            RouterContainer = routerContainer;
-            AccesLevel = accessLevel;
-        }
-
         #region "Public Events"
         /// <summary>
         /// Event that captures at the moment that the current route has changed
         /// </summary>
-        public EventHandler RouteChange;
-        public EventHandler BodyGuard;
+        public EventHandler? RouteChange;
+        public EventHandler? BodyGuard;
         #endregion
 
         #region "Public Properties"
         /// <summary>
         /// List of route
         /// </summary>
-        public List<Route> Routes { get; set; }
+        public Routes Routes { get; set; }
         /// <summary>
         /// TODO
         /// History of router navigations
         /// </summary>
-        public List<Route> history { get; set; } = new List<Route>();
+        public Routes history { get; set; } = [];
         /// <summary>
         /// Element containing the current route
         /// </summary>
-        public Route CurrentRoute;
+        public Route? CurrentRoute;
         #endregion
 
         #region "Private properties"

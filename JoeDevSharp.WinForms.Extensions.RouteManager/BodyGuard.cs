@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using JoeDevSharp.WinForms.Extensions.RouteManager.Models;
 
-namespace Codevia.Router.Net
+namespace JoeDevSharp.WinForms.Extensions.RouteManager
 {
-    public class BodyGuard
-    {
-        public Route From { get; set; }
-        public Route To { get; set; }
-    }
-
     public class Guard
     {
         private Router Router;

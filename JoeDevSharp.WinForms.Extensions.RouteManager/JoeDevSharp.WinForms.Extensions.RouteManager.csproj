@@ -7,19 +7,17 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Codevia.Router</Title>
     <Version>1.0.0.9</Version>
-    <Authors>Codevia</Authors>
-    <Company>Codevia</Company>
-    <PackageProjectUrl>https://codevia.io</PackageProjectUrl>
+    <Authors>JoeDevSharp</Authors>
+    <Company></Company>
+    <PackageProjectUrl>https://jm-ramos.com</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageTags>WindowsForms Router Net</PackageTags>
-    <Description>The Router is designed to facilitate navigation and dynamic management of views and forms in a Windows Forms application. It provides methods and functionalities to switch between different views, pass props during navigation, and control routing in general.
+    <PackageTags>WinForms; C#; Routing; Navigation; Router; Desktop Application; RouteManager; JoeDevSharp; User Interface; Declarative Routing; Modal Dialog; NavigationType; Access Control; Property Injection; Form Navigation; UI Composition; .NET Framework; Windows Forms; Software Architecture; Component-Based Design</PackageTags>
+    <Description>RouteManager is a flexible navigation framework designed for WinForms applications, enabling structured, declarative routing between views.
 </Description>
-    <Copyright>Copyright © 2024</Copyright>
-    <PackageId>Codevia.Router</PackageId>
-    <Product>Codevia.Router</Product>
     <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/JoeDevSharp/WinForms.Extensions.RouteManager</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -39,6 +37,13 @@
 
   <ItemGroup>
     <Folder Include="DefaultViews\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

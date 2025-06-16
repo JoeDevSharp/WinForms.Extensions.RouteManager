@@ -1,4 +1,5 @@
 ﻿using JoeDevSharp.WinForms.Extensions.RouteManager.Builders;
+using JoeDevSharp.WinForms.Extensions.RouteManager.Enums;
 using JoeDevSharp.WinForms.Extensions.RouteManager.Models;
 using WinFormsApp.Views;
 
@@ -20,6 +21,11 @@ namespace WinFormsApp
                         .WithTitle("Paramètres de l'utilisateur")
                         .WithDescription("Permet de modifier les paramètres d'un utilisateur.")
                         .Build(),
+                    RouteBuilder<UserAdd>.Create("UserAdd")
+                        .WithTitle("Ajouter un utilisateur")
+                        .WithDescription("Permet d'ajouter un nouvel utilisateur.")
+                        .WithNavigationType(NavigationType.Dialog)
+                        .Build()
                     ])
                 .Build(),
         };

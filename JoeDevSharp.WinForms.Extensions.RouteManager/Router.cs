@@ -112,8 +112,10 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
         public void To(string routeName, NavigationType? navigationType = null)
         {
             Route route = GetRoute(routeName, Routes);
+            CurrentRoute = route;
 
             EventHandler handlerBodyGuard = BodyGuard;
+
             if (null != handlerBodyGuard) handlerBodyGuard(new BodyGuard()
             {
                 From = CurrentRoute,
@@ -143,14 +145,11 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
             route.Component.FormClosing += (s, e) =>
             {
                 e.Cancel = true;
-                route.Component.FormClosing += (s, e) =>
+                if (s is Form form)
                 {
-                    if (s is Form form)
-                    {
-                        e.Cancel = true;
-                        form.Hide();
-                    }
-                };
+                    e.Cancel = true;
+                    ((Form)s).Hide();
+                }
             };
 
             var propertyInfo = form.GetType().GetProperty("Router");

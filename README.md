@@ -1,21 +1,168 @@
-# WinForm Router
+# 📚 JoeDevSharp.WinForms.Extensions.RouteManager
 
-The Router class is a C# implementation designed to facilitate navigation and dynamic management of views and forms in a Windows Forms application. It provides methods and functionalities to switch between different views, pass props during navigation, and control routing in general.
+## Overview
 
-## Key Features:
+`RouteManager` is a flexible navigation framework designed for WinForms applications, enabling structured, declarative routing between views. It supports:
 
-- View Registration: The router allows registering a list of routes or views available in the application. Each route contains information such as the route name, associated component (form), navigation type, and corresponding image/icon.
-- View Switching: Through the To methods, the router facilitates the transition from one view to another. You can specify the route name and optionally pass props or additional parameters to customize the target.
-- view. The router handles the transition between the corresponding forms.
-- Props Management: The router supports the ability to pass props or additional properties during view switching. These props can be used to transfer relevant information to the destination view and enable further customization and adaptability.
-- Different Navigation Types: The router allows specifying different navigation types, such as standard navigation, displaying forms in the center of the screen, default dialogs, and custom dialogs. Each navigation type is handled differently, based on the logic defined in the corresponding methods.
+- Centralized route definitions
+- Multiple navigation modes (embedded, modal, integrated, etc.)
+- Access control and route guards
+- Route injection and dynamic component instantiation
+- History tracking (optional)
 
-## Benefits:
+---
 
-- Modularity and Flexibility: The router facilitates the creation of more modular and flexible Windows Forms applications by enabling dynamic management of views and forms.
-- Component Reusability: The router's approach allows for reusing components and forms in different sections of the application, improving development and maintenance efficiency.
-- Separation of Concerns: By centralizing navigation management in the router, it achieves better separation of concerns and a more organized code structure.
+## 🚀 Quick Start
 
-In summary, the Router class implemented in C# provides a solution for dynamic management of views and forms in a Windows Forms application. It allows switching between different views, passing props during navigation, and controlling various navigation types. With this implementation, you can achieve greater modularity, flexibility, and component reusability in your application.
+### ✅ Step 1: Define Routes
 
-# Get started
+Define all available routes in your application using the fluent `RouteBuilder` syntax. Here's a clean, real-world example using nested routes with descriptions and navigation types.
+
+```csharp
+internal static class AppRoutes
+{
+    public static Routes Main => new()
+    {
+        RouteBuilder<Users>.Create("Users")
+            .WithTitle("Utilisateurs")
+            .WithDescription("Gestion des utilisateurs")
+            .WithChildren([
+                RouteBuilder<UserDetails>.Create("UserDetails")
+                    .WithTitle("Détails de l'utilisateur")
+                    .WithDescription("Affiche les détails d'un utilisateur spécifique.")
+                    .Build(),
+
+                RouteBuilder<UserSettings>.Create("UserSettings")
+                    .WithTitle("Paramètres de l'utilisateur")
+                    .WithDescription("Permet de modifier les paramètres d'un utilisateur.")
+                    .Build(),
+
+                RouteBuilder<UserAdd>.Create("UserAdd")
+                    .WithTitle("Ajouter un utilisateur")
+                    .WithDescription("Permet d'ajouter un nouvel utilisateur.")
+                    .WithNavigationType(NavigationType.Dialog)
+                    .Build()
+            ])
+            .Build(),
+    };
+}
+```
+
+---
+
+### ✅ Step 2: Initialize Router in Your Main Form
+
+```csharp
+using JoeDevSharp.WinForms.Extensions.RouteManager;
+
+namespace WinFormsApp
+{
+    public partial class Main : Form
+    {
+        public Router Router;
+
+        public Main()
+        {
+            InitializeComponent();
+
+            // Initialize router with route list and target container
+            Router = new Router(AppRoutes.Main, this);
+
+            // Navigate to default route
+            Router.To("Users");
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Router.To("UserDetails");
+        }
+
+        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Router.To("UserSettings");
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Router.To("Users");
+        }
+
+        private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Router.To("UserAdd");
+        }
+    }
+}
+```
+
+---
+
+## ⚙️ Navigation Types
+
+`Router` supports multiple navigation modes, controlled via the `NavigationType` enum:
+
+| NavigationType | Behavior                                               |
+| -------------- | ------------------------------------------------------ |
+| `Navigation`   | Embeds the form inside a container (`RouterContainer`) |
+| `Dialog`       | Shows the form as a blocking dialog                    |
+| `Show`         | Opens the form in a new window                         |
+| `CustomDialog` | Placeholder for advanced modal logic                   |
+| `Integrate`    | Full-screen transparent overlay (e.g., for HUD)        |
+
+---
+
+## 🛡️ Access Control and Guards
+
+- `Router` supports access-level filtering using the optional `accessLevel` parameter.
+- Route transitions can be intercepted using the `BodyGuard` event.
+
+Example:
+
+```csharp
+Router.BodyGuard += (sender, args) =>
+{
+    var guard = (BodyGuard)sender;
+    Console.WriteLine($"Navigating from {guard.From?.Name} to {guard.To.Name}");
+};
+```
+
+---
+
+## 💡 Property Injection
+
+At navigation time, you can inject properties into target forms:
+
+```csharp
+Router.To("UserDetails", new Dictionary<string, object>
+{
+    { "UserId", 42 }
+});
+```
+
+---
+
+## 🧠 Best Practices
+
+- Use `RouteBuilder<T>` for type-safe definitions.
+- Group routes by domain (e.g., users, settings).
+- Avoid hardcoding navigation logic in UI components; route names should act as abstractions.
+- Document route `Title` and `Description` for UI/UX traceability.
+
+---
+
+## 📦 Package Structure (Suggested)
+
+```
+/WinFormsApp
+│
+├── /Views
+│   ├── Users.cs
+│   ├── UserDetails.cs
+│   ├── UserSettings.cs
+│   └── UserAdd.cs
+│
+├── /Routing
+│   └── AppRoutes.cs
+│
+└── Main.cs
+```

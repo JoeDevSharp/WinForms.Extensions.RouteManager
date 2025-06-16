@@ -19,7 +19,7 @@
     <Copyright>Copyright © 2024</Copyright>
     <PackageId>Codevia.Router</PackageId>
     <Product>Codevia.Router</Product>
-    <RootNamespace>Codevia.WinForm.Router.Net</RootNamespace>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,6 +35,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DefaultViews\" />
   </ItemGroup>
 
 </Project>

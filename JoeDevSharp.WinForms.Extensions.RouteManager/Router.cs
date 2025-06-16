@@ -1,4 +1,5 @@
 ﻿using JoeDevSharp.WinForms.Extensions.RouteManager.Enums;
+using JoeDevSharp.WinForms.Extensions.RouteManager.Models;
 
 namespace JoeDevSharp.WinForms.Extensions.RouteManager
 {
@@ -132,13 +133,24 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
 
             CurrentRoute = route;
 
-            var form = route.Component;
+            Form? form = Activator.CreateInstance(route.ComponentType) as Form;
+            if (form is null)
+                throw new InvalidOperationException($"Unable to create an instance of the component: {route.Component.GetType().FullName}");
+            
             form.AutoScroll = true;
-            // TODO
+
+            route.Component = form;
             route.Component.FormClosing += (s, e) =>
             {
                 e.Cancel = true;
-                ((Form)s).Hide();
+                route.Component.FormClosing += (s, e) =>
+                {
+                    if (s is Form form)
+                    {
+                        e.Cancel = true;
+                        form.Hide();
+                    }
+                };
             };
 
             var propertyInfo = form.GetType().GetProperty("Router");

@@ -8,12 +8,6 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
     /// </summary>
     public class Router
     {
-        /// <summary>
-        /// Constructor of class
-        /// </summary>
-        /// <param name="routes">List of Route</param>
-        /// <param name="routerContainer">Container where the current navigation will be capped</param>
-        /// <param name="historyNavigate">If we want to activate the navigation record</param>
         public Router(Routes routes, ScrollableControl routerContainer, int? accessLevel = null, bool historyNavigate = false)
         {
             Routes = routes;
@@ -23,141 +17,152 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
         }
 
         #region "Public Events"
-        /// <summary>
-        /// Event that captures at the moment that the current route has changed
-        /// </summary>
         public EventHandler? RouteChange;
         public EventHandler? BodyGuard;
         #endregion
 
         #region "Public Properties"
-        /// <summary>
-        /// List of route
-        /// </summary>
         public Routes Routes { get; set; }
-        /// <summary>
-        /// TODO
-        /// History of router navigations
-        /// </summary>
-        public Routes history { get; set; } = [];
-        /// <summary>
-        /// Element containing the current route
-        /// </summary>
         public Route? CurrentRoute;
         #endregion
 
-        #region "Private properties"
+        #region "Private Properties"
         private ScrollableControl RouterContainer { get; set; }
-        /// <summary>
-        /// Element contining the history of navigation
-        /// </summary>
         private bool HistoryNavigate { get; set; } = false;
         private int? AccesLevel;
+
+        private readonly Stack<Route> _backStack = new();
+        private readonly Stack<Route> _forwardStack = new();
         #endregion
 
-        #region "Public methods"
-        /// <summary>
-        /// This method allows to find a Router from its name
-        /// </summary>
-        /// <param name="routeName">name of route</param>
-        /// <param name="routes">Routes (Optional)</param>
-        /// <returns></returns>
-        public Route GetRoute(string routeName, List<Route> routes = null)
+        #region "Public Methods"
+        public Route GetRoute(string routeName, List<Route>? routes = null)
         {
-            if (routes == null)
-            {
-                routes = Routes;
-            }
+            routes ??= Routes;
 
             foreach (var route in routes)
             {
                 if (route.Name == routeName)
-                {
                     return route;
-                }
-                else if (route.Childrend != null)
+
+                if (route.Childrend != null)
                 {
-                    return GetRoute(routeName, route.Childrend);
+                    var childRoute = GetRoute(routeName, route.Childrend);
+                    if (childRoute != null)
+                        return childRoute;
                 }
             }
 
             return null;
         }
-        /// <summary>
-        /// This method allows us to navigate to a new router based on its name.
-        /// </summary>
-        /// <param name="routeName">Name of route</param>
-        /// <param name="props">Properties to inject the router in the navigation</param>
-        /// <param name="navigationType">Type of navigation (optional)</param>
+
         public void To(string routeName, Dictionary<string, object> props, NavigationType? navigationType = null)
         {
-            Route route = GetRoute(routeName, Routes);
+            var route = GetRoute(routeName, Routes);
+
+            if (route == null)
+                throw new InvalidOperationException($"Route '{routeName}' not found.");
 
             if (props != null)
             {
                 foreach (var prop in props)
                 {
-                    route.Component.GetType().GetProperty(prop.Key)?.SetValue(route.Component, prop.Value, null);
+                    route.Component?.GetType().GetProperty(prop.Key)?.SetValue(route.Component, prop.Value, null);
                 }
             }
-            route.Component.GetType().GetProperty("Router")?.SetValue(route.Component, this, null);
-            CurrentRoute = route;
-            To(routeName, navigationType);
+
+            route.Component?.GetType().GetProperty("Router")?.SetValue(route.Component, this, null);
+
+            if (CurrentRoute != null && HistoryNavigate)
+            {
+                _backStack.Push(CurrentRoute);
+                _forwardStack.Clear();
+            }
+
+            NavigateToRoute(route, navigationType);
         }
-        /// <summary>
-        /// This method allows us to navigate to a new router based on its name.
-        /// </summary>
-        /// <param name="routeName">Name of Router</param>
-        /// <param name="navigationType">Type of navigation (optional)</param>
+
         public void To(string routeName, NavigationType? navigationType = null)
         {
-            Route route = GetRoute(routeName, Routes);
-            CurrentRoute = route;
+            var route = GetRoute(routeName, Routes);
+            if (route == null)
+                throw new InvalidOperationException($"Route '{routeName}' not found.");
 
-            EventHandler handlerBodyGuard = BodyGuard;
-
-            if (null != handlerBodyGuard) handlerBodyGuard(new BodyGuard()
+            if (CurrentRoute != null && HistoryNavigate)
             {
-                From = CurrentRoute,
-                To = route
-            }, EventArgs.Empty);
+                _backStack.Push(CurrentRoute);
+                _forwardStack.Clear();
+            }
 
-            if (AccesLevel is not null && AccesLevel > (int)route.Permisions)
+            NavigateToRoute(route, navigationType);
+        }
+
+        public void Back()
+        {
+            if (!HistoryNavigate || _backStack.Count == 0)
+                return;
+
+            var previous = _backStack.Pop();
+
+            if (CurrentRoute != null)
+                _forwardStack.Push(CurrentRoute);
+
+            NavigateToRoute(previous);
+        }
+
+        public void Forward()
+        {
+            if (!HistoryNavigate || _forwardStack.Count == 0)
+                return;
+
+            var next = _forwardStack.Pop();
+
+            if (CurrentRoute != null)
+                _backStack.Push(CurrentRoute);
+
+            NavigateToRoute(next);
+        }
+        #endregion
+
+        #region "Private Methods"
+        private void NavigateToRoute(Route route, NavigationType? navigationTypeOverride = null)
+        {
+            var handlerBodyGuard = BodyGuard;
+            if (handlerBodyGuard != null)
             {
-                MessageBox.Show("You don't have acces for this route");
+                handlerBodyGuard(new BodyGuard()
+                {
+                    From = CurrentRoute,
+                    To = route
+                }, EventArgs.Empty);
+            }
+
+            if (AccesLevel != null && AccesLevel > (int)route.Permisions)
+            {
+                MessageBox.Show("You don't have access to this route");
                 return;
             }
 
-            if (navigationType == null)
-            {
-                navigationType = (NavigationType)route.Type;
-            }
+            var form = Activator.CreateInstance(route.ComponentType) as Form;
+            if (form == null)
+                throw new InvalidOperationException($"Unable to create an instance of the component: {route.ComponentType.FullName}");
 
-            CurrentRoute = route;
-
-            Form? form = Activator.CreateInstance(route.ComponentType) as Form;
-            if (form is null)
-                throw new InvalidOperationException($"Unable to create an instance of the component: {route.Component.GetType().FullName}");
-            
             form.AutoScroll = true;
-
             route.Component = form;
-            route.Component.FormClosing += (s, e) =>
+
+            form.FormClosing += (s, e) =>
             {
                 e.Cancel = true;
-                if (s is Form form)
-                {
-                    e.Cancel = true;
-                    ((Form)s).Hide();
-                }
+                if (s is Form f)
+                    f.Hide();
             };
 
             var propertyInfo = form.GetType().GetProperty("Router");
+            propertyInfo?.SetValue(form, this, null);
 
-            if (propertyInfo != null)
-            {
-                propertyInfo.SetValue(form, this, null);
-            }
+            CurrentRoute = route;
+
+            var navigationType = navigationTypeOverride ?? route.Type;
 
             switch (navigationType)
             {
@@ -170,38 +175,28 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
                 case NavigationType.Dialog:
                     ShowDefaultDialog(route);
                     break;
-                case NavigationType.CustomDialog:
-                    ShowCustomDialog(route);
-                    break;
+                //case NavigationType.CustomDialog:
+                //    ShowCustomDialog(route);
+                //    break;
                 case NavigationType.Integrate:
                     Integrate(route);
                     break;
             }
 
-            EventHandler handler = RouteChange;
-            if (null != handler) handler(route, EventArgs.Empty);
+            RouteChange?.Invoke(route, EventArgs.Empty);
         }
-        #endregion
 
-        #region "Private Methods"
-        /// <summary>
-        /// Hides all the components of the RouterContainer that are of type System.Windows.Forms.Form.
-        /// </summary>
         private void HideComponents()
         {
-            var components = RouterContainer.Controls.Cast<Control>().ToList().Where(e => e.GetType().BaseType.FullName == "System.Windows.Forms.Form").ToList();
-            if (components.Count > 0)
-            {
-                components.ForEach(e =>
-                {
-                    e.Hide();
-                });
-            }
+            var components = RouterContainer.Controls
+                .Cast<Control>()
+                .Where(e => e.GetType().BaseType?.FullName == "System.Windows.Forms.Form")
+                .ToList();
+
+            foreach (var c in components)
+                c.Hide();
         }
-        /// <summary>
-        /// Restarts a component by performing various operations on the provided Form object.
-        /// </summary>
-        /// <param name="component">The Form component to be restarted</param>
+
         private void RestarComponent(Form component)
         {
             RouterContainer.Controls.Remove(component);
@@ -212,26 +207,23 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
             component.Dock = DockStyle.None;
             component.Hide();
         }
-        /// <summary>
-        /// Navigates to a specified route by hiding the current components, adding the route's component to the RouterContainer, and showing it.
-        /// </summary>
-        /// <param name="route"></param>
+
         private void Navigate(Route route)
         {
             HideComponents();
 
-            Form component = route.Component;
+            var component = route.Component;
             component.TopLevel = false;
             component.FormBorderStyle = FormBorderStyle.None;
             component.Dock = DockStyle.Fill;
 
             RouterContainer.Controls.Add(component);
-
             component.Show();
         }
+
         private void Integrate(Route route)
         {
-            Form form = route.Component;
+            var form = route.Component;
             form.BackColor = Color.Lime;
             form.ForeColor = Color.Black;
             form.FormBorderStyle = FormBorderStyle.None;
@@ -243,12 +235,14 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
             form.WindowState = FormWindowState.Maximized;
             form.Show();
         }
+
         private void Show(Route route)
         {
             RestarComponent(route.Component);
             route.Component.StartPosition = FormStartPosition.CenterScreen;
             route.Component.Show();
         }
+
         private void ShowDefaultDialog(Route route)
         {
             RestarComponent(route.Component);
@@ -256,13 +250,13 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
             route.Component.MinimizeBox = false;
             route.Component.MaximizeBox = false;
             route.Component.ShowInTaskbar = false;
-
             route.Component.ShowDialog();
         }
-        private void ShowCustomDialog(Route route)
-        {
-            // Todo
-        }
+
+        //private void ShowCustomDialog(Route route)
+        //{
+        //    // TODO: Implement custom dialog logic
+        //}
         #endregion
     }
 }

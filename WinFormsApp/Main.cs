@@ -8,7 +8,7 @@ namespace WinFormsApp
         public Main()
         {
             InitializeComponent();
-            Router = new Router(AppRoutes.Main, this);
+            Router = new Router(AppRoutes.Main, this, null, true);
 
             Router.To("Users");
         }
@@ -31,6 +31,16 @@ namespace WinFormsApp
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Router.To("UserAdd");
+        }
+
+        private void backToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Router.Back();
+        }
+
+        private void nextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Router.Forward();
         }
     }
 }

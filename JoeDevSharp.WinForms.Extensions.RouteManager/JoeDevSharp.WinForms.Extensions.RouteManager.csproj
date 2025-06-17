@@ -7,11 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.0.9</Version>
+    <Version>2.0.1</Version>
     <Authors>JoeDevSharp</Authors>
     <Company></Company>
     <PackageProjectUrl>https://jm-ramos.com</PackageProjectUrl>
-    <PackageIcon>icon.png</PackageIcon>
+    <PackageIcon>JoeDevSharp.WinForms.Extensions.RouteManager.logo.png</PackageIcon>
     <PackageTags>WinForms; C#; Routing; Navigation; Router; Desktop Application; RouteManager; JoeDevSharp; User Interface; Declarative Routing; Modal Dialog; NavigationType; Access Control; Property Injection; Form Navigation; UI Composition; .NET Framework; Windows Forms; Software Architecture; Component-Based Design</PackageTags>
     <Description>RouteManager is a flexible navigation framework designed for WinForms applications, enabling structured, declarative routing between views.
 </Description>
@@ -30,6 +30,10 @@
 
   <ItemGroup>
     <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="JoeDevSharp.WinForms.Extensions.RouteManager.logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

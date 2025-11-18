@@ -143,12 +143,24 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
                 return;
             }
 
-            var form = Activator.CreateInstance(route.ComponentType) as Form;
-            if (form == null)
-                throw new InvalidOperationException($"Unable to create an instance of the component: {route.ComponentType.FullName}");
+            Form? form = null;
 
-            form.AutoScroll = true;
-            route.Component = form;
+            if (route.ComponentType is not null)
+            {
+                form = Activator.CreateInstance(route.ComponentType) as Form;
+
+                if (form == null)
+                    throw new InvalidOperationException($"Unable to create an instance of the component: {route.ComponentType.FullName}");
+                
+                form.AutoScroll = true;
+                route.Component = form;
+            }else
+            {
+                if (route.Component is null)
+                    throw new NullReferenceException($"Router component is not defined");
+
+                form = route.Component;
+            }
 
             form.FormClosing += (s, e) =>
             {

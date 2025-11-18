@@ -15,8 +15,8 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager.Models
         public string Description { get; set; } = "";
         public Image? Image { get; set; }
         public NavigationType Type { get; set; } = NavigationType.Navigation;
-        public required Type ComponentType { get; set; }
-        public Form Component { get; set; }
+        public Type? ComponentType { get; set; }
+        public Form? Component { get; set; }
         public Routes? Childrend { get; set; }
     }
 

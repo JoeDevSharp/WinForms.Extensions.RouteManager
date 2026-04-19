@@ -147,7 +147,9 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
 
             if (route.ComponentType is not null)
             {
-                form = Activator.CreateInstance(route.ComponentType) as Form;
+                form = route.Component is null
+                    ? Activator.CreateInstance(route.ComponentType) as Form
+                    : route.Component;
 
                 if (form == null)
                     throw new InvalidOperationException($"Unable to create an instance of the component: {route.ComponentType.FullName}");

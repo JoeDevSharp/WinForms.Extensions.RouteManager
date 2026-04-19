@@ -19,6 +19,7 @@ public class RouteBuilder<TView> where TView : Form
         {
             Name = name,
             ComponentType = typeof(TView),
+            Component = (Form)Activator.CreateInstance(typeof(TView))
         };
     }
 

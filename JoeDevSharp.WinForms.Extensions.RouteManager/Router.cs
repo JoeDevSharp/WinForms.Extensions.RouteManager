@@ -171,8 +171,8 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
                     f.Hide();
             };
 
-            var propertyInfo = form.GetType().GetProperty("Router");
-            propertyInfo?.SetValue(form, this, null);
+            var fieldInfo = form.GetType().GetField("Router");
+            fieldInfo?.SetValue(form, this);
 
             CurrentRoute = route;
 

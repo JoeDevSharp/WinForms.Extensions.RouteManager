@@ -29,6 +29,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DefaultViews\**" />
+    <EmbeddedResource Remove="DefaultViews\**" />
+    <None Remove="DefaultViews\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -37,10 +43,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DefaultViews\" />
   </ItemGroup>
 
   <ItemGroup>

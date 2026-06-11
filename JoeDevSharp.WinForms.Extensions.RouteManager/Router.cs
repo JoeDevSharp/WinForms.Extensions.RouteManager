@@ -264,6 +264,7 @@ namespace JoeDevSharp.WinForms.Extensions.RouteManager
             route.Component.MinimizeBox = false;
             route.Component.MaximizeBox = false;
             route.Component.ShowInTaskbar = false;
+            route.Component.TopMost = true;
             route.Component.ShowDialog();
         }
 
